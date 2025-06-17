@@ -1,10 +1,10 @@
-// performance-tests/rate-limit-test.js
 import http from 'k6/http';
+
 export const options = {
   scenarios: {
     high_req_rate: {
       executor: 'constant-arrival-rate',
-      rate: 200,           // 200 iterations per second
+      rate: 200,
       timeUnit: '1s',
       duration: '10s',
       preAllocatedVUs: 50,
@@ -12,6 +12,7 @@ export const options = {
     },
   },
 };
+
 export default function () {
-  http.get('http://localhost:3000/temperature');
+  http.get('https://temperature-api-3rg8.onrender.com/temperature');
 }

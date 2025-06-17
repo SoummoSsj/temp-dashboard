@@ -9,6 +9,16 @@ const temperatureRouter = require('./routes/temperature');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Catch-all route to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 // HTTP request logging (to console/file as needed)
 app.use(morgan('combined', {

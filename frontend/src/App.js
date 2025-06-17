@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     // Fetch new data every second
     const interval = setInterval(() => {
-      fetch('/temperature')
+      fetch('https://temperature-api-3rg8.onrender.com/temperature')
         .then(res => res.json())
         .then(json => {
           setDataPoints(prev => {

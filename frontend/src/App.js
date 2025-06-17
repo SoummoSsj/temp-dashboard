@@ -1,15 +1,16 @@
 // frontend/src/App.js
+
 import React, { useState, useEffect } from 'react';
 import TemperatureChart from './TemperatureChart';
 import './App.css';
-
+const API_URL = process.env.REACT_APP_API_URL;
 function App() {
   const [dataPoints, setDataPoints] = useState([]);
 
   useEffect(() => {
     // Fetch new data every second
     const interval = setInterval(() => {
-      fetch('https://temperature-api-3rg8.onrender.com/temperature')
+       fetch(`${API_URL}/temperature`)
         .then(res => res.json())
         .then(json => {
           setDataPoints(prev => {
